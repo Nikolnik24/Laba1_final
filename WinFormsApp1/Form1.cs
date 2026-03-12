@@ -1,4 +1,5 @@
 using System;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace WinFormsApp1
@@ -25,28 +26,133 @@ namespace WinFormsApp1
 
         private void AddClientButton_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(nameTextBox.Text) || string.IsNullOrEmpty(emailTextBox.Text)
-            || string.IsNullOrEmpty(phoneTextBox.Text) || string.IsNullOrEmpty(addressTextBox.Text))
-            {
-                MessageBox.Show("Заполните все поля!");
-                return;
-            }
-
-            Client newClient = new Client(nameTextBox.Text, emailTextBox.Text,
-            phoneTextBox.Text, addressTextBox.Text);
-
             try
             {
+                if (nameTextBox == null || emailTextBox == null ||
+                    phoneTextBox == null || addressTextBox == null)
+                {
+                    MessageBox.Show("Ошибка инициализации полей ввода!",
+                        "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(nameTextBox.Text))
+                {
+                    MessageBox.Show("Введите имя клиента!", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    nameTextBox.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(emailTextBox.Text))
+                {
+                    MessageBox.Show("Введите email клиента!", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    emailTextBox.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(phoneTextBox.Text))
+                {
+                    MessageBox.Show("Введите телефон клиента!", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    phoneTextBox.Focus();
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(addressTextBox.Text))
+                {
+                    MessageBox.Show("Введите адрес клиента!", "Ошибка",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    addressTextBox.Focus();
+                    return;
+                }
+
+                string email = emailTextBox.Text.Trim();
+                if (!email.Contains("@") || !email.Contains("."))
+                {
+                    MessageBox.Show("Введите корректный email!\nПример: name@domain.com",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    emailTextBox.Focus();
+                    return;
+                }
+
+                string phone = phoneTextBox.Text.Trim();
+
+                string cleanedPhone = phone.Replace(" ", "")      
+                                           .Replace("-", "")      
+                                           .Replace("(", "")    
+                                           .Replace(")", "")      
+                                           .Replace("+", "");    
+
+
+                foreach (char c in cleanedPhone)
+                {
+                    if (!char.IsDigit(c))
+                    {
+                        MessageBox.Show("Телефон должен содержать только цифры!\n" +
+                                      "Допустимые символы: пробел, дефис, скобки, +",
+                                      "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        phoneTextBox.Focus();
+                        return;
+                    }
+                }
+
+                if (cleanedPhone.Length != 11)
+                {
+                    MessageBox.Show("Телефон должен содержать ровно 11 цифр!\n" +
+                                  "Примеры правильных форматов:\n" +
+                                  "89991234567\n" +
+                                  "8-999-123-45-67\n" +
+                                  "+7 (999) 123-45-67",
+                                  "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    phoneTextBox.Focus();
+                    return;
+                }
+
+                if (cleanedPhone[0] != '8' && cleanedPhone[0] != '7')
+                {
+                    MessageBox.Show("Российский номер должен начинаться с 8 или 7!",
+                        "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    phoneTextBox.Focus();
+                    return;
+                }
+
+                Client newClient = new Client(
+                    nameTextBox.Text.Trim(),           
+                    emailTextBox.Text.Trim(),          
+                    cleanedPhone,                      
+                    addressTextBox.Text.Trim()         
+                );
+
                 clientManager.AddClient(newClient);
+
                 nameTextBox.Clear();
                 emailTextBox.Clear();
                 phoneTextBox.Clear();
                 addressTextBox.Clear();
+
                 UpdateClientsList();
+
+                MessageBox.Show($"Клиент {newClient.Name} успешно добавлен!",
+                    "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                nameTextBox.Focus();
+            }
+            catch (ArgumentNullException ex)
+            {
+                MessageBox.Show($"Ошибка: не переданы данные клиента\n{ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Ошибка при сохранении в файл:\n{ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show($"Неожиданная ошибка:\n{ex.Message}",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -65,7 +171,6 @@ namespace WinFormsApp1
                 string name = parts[0].Trim();
                 string email = parts[1].Trim();
 
-                // Исправлено: убираем скобки из email
                 if (email.Contains("("))
                 {
                     email = email.Substring(0, email.IndexOf("(")).Trim();
@@ -85,6 +190,35 @@ namespace WinFormsApp1
                     }
                 }
             }
+        }
+        private bool IsValidPhone(string phone)
+        {
+            string cleanedPhone = phone.Replace(" ", "").Replace("-", "").Replace("(", "").Replace(")", "");
+
+            if (!Regex.IsMatch(cleanedPhone, @"^\d+$"))
+            {
+                MessageBox.Show("Телефон должен содержать только цифры!", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (cleanedPhone.Length != 11)
+            {
+                MessageBox.Show("Телефон должен содержать ровно 11 цифр!\nНапример: 89991234567",
+                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            return true;
+        }
+
+        private string FormatPhone(string phone)
+        {
+            if (phone.Length == 11)
+            {
+                return $"{phone[0]}-{phone.Substring(1, 3)}-{phone.Substring(4, 3)}-{phone.Substring(7, 2)}-{phone.Substring(9, 2)}";
+            }
+            return phone;
         }
 
         private void SearchButton_Click(object sender, EventArgs e)

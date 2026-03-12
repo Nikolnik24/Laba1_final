@@ -32,167 +32,262 @@
 
         private void InitializeComponent()
         {
-            // Инициализация компонентов
-            this.nameTextBox = new TextBox();
-            this.emailTextBox = new TextBox();
-            this.phoneTextBox = new TextBox();
-            this.addressTextBox = new TextBox();
-            this.addClientButton = new Button();
-            this.removeClientButton = new Button();
-            this.searchTextBox = new TextBox();
-            this.searchButton = new Button();
-            this.clientsListBox = new ListBox();
-            this.nameLabel = new Label();
-            this.emailLabel = new Label();
-            this.phoneLabel = new Label();
-            this.addressLabel = new Label();
-            this.searchLabel = new Label();
-            this.inputGroupBox = new GroupBox();
-            this.searchGroupBox = new GroupBox();
-            this.listGroupBox = new GroupBox();
-
-            this.inputGroupBox.SuspendLayout();
-            this.searchGroupBox.SuspendLayout();
-            this.listGroupBox.SuspendLayout();
-            this.SuspendLayout();
-
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(6, 22);
-            this.nameLabel.Text = "Имя:";
-            this.nameLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-
-            this.nameTextBox.Location = new System.Drawing.Point(50, 19);
-            this.nameTextBox.Size = new System.Drawing.Size(150, 23);
-            this.nameTextBox.PlaceholderText = "Введите имя";
-
-            this.emailLabel.AutoSize = true;
-            this.emailLabel.Location = new System.Drawing.Point(206, 22);
-            this.emailLabel.Text = "Email:";
-            this.emailLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-
-            this.emailTextBox.Location = new System.Drawing.Point(250, 19);
-            this.emailTextBox.Size = new System.Drawing.Size(150, 23);
-            this.emailTextBox.PlaceholderText = "Введите email";
-
-            this.phoneLabel.AutoSize = true;
-            this.phoneLabel.Location = new System.Drawing.Point(406, 22);
-            this.phoneLabel.Text = "Тел.:";
-            this.phoneLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-
-            this.phoneTextBox.Location = new System.Drawing.Point(440, 19);
-            this.phoneTextBox.Size = new System.Drawing.Size(100, 23);
-            this.phoneTextBox.PlaceholderText = "Телефон";
-
-            this.addressLabel.AutoSize = true;
-            this.addressLabel.Location = new System.Drawing.Point(6, 52);
-            this.addressLabel.Text = "Адрес:";
-            this.addressLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-
-            this.addressTextBox.Location = new System.Drawing.Point(50, 49);
-            this.addressTextBox.Size = new System.Drawing.Size(490, 60);
-            this.addressTextBox.Multiline = true;
-            this.addressTextBox.PlaceholderText = "Введите адрес";
-
-            this.addClientButton.Location = new System.Drawing.Point(50, 115);
-            this.addClientButton.Size = new System.Drawing.Size(100, 30);
-            this.addClientButton.Text = "➕ Добавить";
-            this.addClientButton.UseVisualStyleBackColor = true;
-            this.addClientButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.addClientButton.BackColor = System.Drawing.Color.FromArgb(76, 175, 80);
-            this.addClientButton.ForeColor = System.Drawing.Color.White;
-            this.addClientButton.FlatStyle = FlatStyle.Flat;
-            this.addClientButton.FlatAppearance.BorderSize = 0;
-
-            this.removeClientButton.Location = new System.Drawing.Point(160, 115);
-            this.removeClientButton.Size = new System.Drawing.Size(100, 30);
-            this.removeClientButton.Text = "✖ Удалить";
-            this.removeClientButton.UseVisualStyleBackColor = true;
-            this.removeClientButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.removeClientButton.BackColor = System.Drawing.Color.FromArgb(244, 67, 54);
-            this.removeClientButton.ForeColor = System.Drawing.Color.White;
-            this.removeClientButton.FlatStyle = FlatStyle.Flat;
-            this.removeClientButton.FlatAppearance.BorderSize = 0;
-
-            this.inputGroupBox.Controls.Add(this.nameLabel);
-            this.inputGroupBox.Controls.Add(this.nameTextBox);
-            this.inputGroupBox.Controls.Add(this.emailLabel);
-            this.inputGroupBox.Controls.Add(this.emailTextBox);
-            this.inputGroupBox.Controls.Add(this.phoneLabel);
-            this.inputGroupBox.Controls.Add(this.phoneTextBox);
-            this.inputGroupBox.Controls.Add(this.addressLabel);
-            this.inputGroupBox.Controls.Add(this.addressTextBox);
-            this.inputGroupBox.Controls.Add(this.addClientButton);
-            this.inputGroupBox.Controls.Add(this.removeClientButton);
-            this.inputGroupBox.Location = new System.Drawing.Point(12, 12);
-            this.inputGroupBox.Size = new System.Drawing.Size(560, 160);
-            this.inputGroupBox.Text = "Ввод данных клиента";
-            this.inputGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-
-
-            this.searchLabel.AutoSize = true;
-            this.searchLabel.Location = new System.Drawing.Point(6, 22);
-            this.searchLabel.Text = "Поиск:";
-            this.searchLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-
-    
-            this.searchTextBox.Location = new System.Drawing.Point(50, 19);
-            this.searchTextBox.Size = new System.Drawing.Size(200, 23);
-            this.searchTextBox.PlaceholderText = "Введите текст для поиска";
-
- 
-            this.searchButton.Location = new System.Drawing.Point(260, 18);
-            this.searchButton.Size = new System.Drawing.Size(80, 25);
-            this.searchButton.Text = "🔍 Искать";
-            this.searchButton.UseVisualStyleBackColor = true;
-            this.searchButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.searchButton.BackColor = System.Drawing.Color.FromArgb(33, 150, 243);
-            this.searchButton.ForeColor = System.Drawing.Color.White;
-            this.searchButton.FlatStyle = FlatStyle.Flat;
-            this.searchButton.FlatAppearance.BorderSize = 0;
-
-
-            this.searchGroupBox.Controls.Add(this.searchLabel);
-            this.searchGroupBox.Controls.Add(this.searchTextBox);
-            this.searchGroupBox.Controls.Add(this.searchButton);
-            this.searchGroupBox.Location = new System.Drawing.Point(12, 178);
-            this.searchGroupBox.Size = new System.Drawing.Size(560, 60);
-            this.searchGroupBox.Text = "Поиск клиентов";
-            this.searchGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-
-            this.clientsListBox.Location = new System.Drawing.Point(6, 19);
-            this.clientsListBox.Size = new System.Drawing.Size(548, 180);
-            this.clientsListBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.clientsListBox.BorderStyle = BorderStyle.FixedSingle;
-            this.clientsListBox.BackColor = System.Drawing.Color.FromArgb(245, 245, 245);
-            this.clientsListBox.HorizontalScrollbar = true;
-
-   
-            this.listGroupBox.Controls.Add(this.clientsListBox);
-            this.listGroupBox.Location = new System.Drawing.Point(12, 244);
-            this.listGroupBox.Size = new System.Drawing.Size(560, 215);
-            this.listGroupBox.Text = "Список клиентов";
-            this.listGroupBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-
-
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 471);
-            this.Controls.Add(this.inputGroupBox);
-            this.Controls.Add(this.searchGroupBox);
-            this.Controls.Add(this.listGroupBox);
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Управление клиентами";
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BackColor = System.Drawing.Color.FromArgb(240, 240, 240);
-
-            this.inputGroupBox.ResumeLayout(false);
-            this.inputGroupBox.PerformLayout();
-            this.searchGroupBox.ResumeLayout(false);
-            this.searchGroupBox.PerformLayout();
-            this.listGroupBox.ResumeLayout(false);
-            this.ResumeLayout(false);
+            nameTextBox = new TextBox();
+            emailTextBox = new TextBox();
+            phoneTextBox = new TextBox();
+            addressTextBox = new TextBox();
+            addClientButton = new Button();
+            removeClientButton = new Button();
+            searchTextBox = new TextBox();
+            searchButton = new Button();
+            clientsListBox = new ListBox();
+            nameLabel = new Label();
+            emailLabel = new Label();
+            phoneLabel = new Label();
+            addressLabel = new Label();
+            searchLabel = new Label();
+            inputGroupBox = new GroupBox();
+            searchGroupBox = new GroupBox();
+            listGroupBox = new GroupBox();
+            inputGroupBox.SuspendLayout();
+            searchGroupBox.SuspendLayout();
+            listGroupBox.SuspendLayout();
+            SuspendLayout();
+            // 
+            // nameTextBox
+            // 
+            nameTextBox.Location = new Point(86, 38);
+            nameTextBox.Margin = new Padding(5, 6, 5, 6);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.PlaceholderText = "Введите имя";
+            nameTextBox.Size = new Size(254, 35);
+            nameTextBox.TabIndex = 1;
+            // 
+            // emailTextBox
+            // 
+            emailTextBox.Location = new Point(429, 38);
+            emailTextBox.Margin = new Padding(5, 6, 5, 6);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.PlaceholderText = "Введите email";
+            emailTextBox.Size = new Size(254, 35);
+            emailTextBox.TabIndex = 3;
+            // 
+            // phoneTextBox
+            // 
+            phoneTextBox.Location = new Point(754, 38);
+            phoneTextBox.Margin = new Padding(5, 6, 5, 6);
+            phoneTextBox.Name = "phoneTextBox";
+            phoneTextBox.PlaceholderText = "Телефон";
+            phoneTextBox.Size = new Size(169, 35);
+            phoneTextBox.TabIndex = 5;
+            // 
+            // addressTextBox
+            // 
+            addressTextBox.Location = new Point(86, 98);
+            addressTextBox.Margin = new Padding(5, 6, 5, 6);
+            addressTextBox.Multiline = true;
+            addressTextBox.Name = "addressTextBox";
+            addressTextBox.PlaceholderText = "Введите адрес";
+            addressTextBox.Size = new Size(837, 116);
+            addressTextBox.TabIndex = 7;
+            // 
+            // addClientButton
+            // 
+            addClientButton.BackColor = Color.FromArgb(76, 175, 80);
+            addClientButton.FlatAppearance.BorderSize = 0;
+            addClientButton.FlatStyle = FlatStyle.Flat;
+            addClientButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            addClientButton.ForeColor = Color.White;
+            addClientButton.Location = new Point(86, 230);
+            addClientButton.Margin = new Padding(5, 6, 5, 6);
+            addClientButton.Name = "addClientButton";
+            addClientButton.Size = new Size(171, 60);
+            addClientButton.TabIndex = 8;
+            addClientButton.Text = "➕ Добавить";
+            addClientButton.UseVisualStyleBackColor = false;
+            addClientButton.Click += AddClientButton_Click;
+            // 
+            // removeClientButton
+            // 
+            removeClientButton.BackColor = Color.FromArgb(244, 67, 54);
+            removeClientButton.FlatAppearance.BorderSize = 0;
+            removeClientButton.FlatStyle = FlatStyle.Flat;
+            removeClientButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            removeClientButton.ForeColor = Color.White;
+            removeClientButton.Location = new Point(274, 230);
+            removeClientButton.Margin = new Padding(5, 6, 5, 6);
+            removeClientButton.Name = "removeClientButton";
+            removeClientButton.Size = new Size(171, 60);
+            removeClientButton.TabIndex = 9;
+            removeClientButton.Text = "✖ Удалить";
+            removeClientButton.UseVisualStyleBackColor = false;
+            removeClientButton.Click += RemoveClientButton_Click;
+            // 
+            // searchTextBox
+            // 
+            searchTextBox.Location = new Point(86, 38);
+            searchTextBox.Margin = new Padding(5, 6, 5, 6);
+            searchTextBox.Name = "searchTextBox";
+            searchTextBox.PlaceholderText = "Введите текст для поиска";
+            searchTextBox.Size = new Size(340, 35);
+            searchTextBox.TabIndex = 1;
+            // 
+            // searchButton
+            // 
+            searchButton.BackColor = Color.FromArgb(33, 150, 243);
+            searchButton.FlatAppearance.BorderSize = 0;
+            searchButton.FlatStyle = FlatStyle.Flat;
+            searchButton.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            searchButton.ForeColor = Color.White;
+            searchButton.Location = new Point(446, 36);
+            searchButton.Margin = new Padding(5, 6, 5, 6);
+            searchButton.Name = "searchButton";
+            searchButton.Size = new Size(137, 50);
+            searchButton.TabIndex = 2;
+            searchButton.Text = "🔍 Искать";
+            searchButton.UseVisualStyleBackColor = false;
+            searchButton.Click += SearchButton_Click;
+            // 
+            // clientsListBox
+            // 
+            clientsListBox.BackColor = Color.FromArgb(245, 245, 245);
+            clientsListBox.BorderStyle = BorderStyle.FixedSingle;
+            clientsListBox.Font = new Font("Segoe UI", 9F);
+            clientsListBox.HorizontalScrollbar = true;
+            clientsListBox.ItemHeight = 30;
+            clientsListBox.Location = new Point(10, 38);
+            clientsListBox.Margin = new Padding(5, 6, 5, 6);
+            clientsListBox.Name = "clientsListBox";
+            clientsListBox.Size = new Size(938, 332);
+            clientsListBox.TabIndex = 0;
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Font = new Font("Segoe UI", 9F);
+            nameLabel.Location = new Point(10, 44);
+            nameLabel.Margin = new Padding(5, 0, 5, 0);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new Size(60, 30);
+            nameLabel.TabIndex = 0;
+            nameLabel.Text = "Имя:";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.Font = new Font("Segoe UI", 9F);
+            emailLabel.Location = new Point(353, 44);
+            emailLabel.Margin = new Padding(5, 0, 5, 0);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new Size(68, 30);
+            emailLabel.TabIndex = 2;
+            emailLabel.Text = "Email:";
+            // 
+            // phoneLabel
+            // 
+            phoneLabel.AutoSize = true;
+            phoneLabel.Font = new Font("Segoe UI", 9F);
+            phoneLabel.Location = new Point(696, 44);
+            phoneLabel.Margin = new Padding(5, 0, 5, 0);
+            phoneLabel.Name = "phoneLabel";
+            phoneLabel.Size = new Size(56, 30);
+            phoneLabel.TabIndex = 4;
+            phoneLabel.Text = "Тел.:";
+            // 
+            // addressLabel
+            // 
+            addressLabel.AutoSize = true;
+            addressLabel.Font = new Font("Segoe UI", 9F);
+            addressLabel.Location = new Point(10, 104);
+            addressLabel.Margin = new Padding(5, 0, 5, 0);
+            addressLabel.Name = "addressLabel";
+            addressLabel.Size = new Size(76, 30);
+            addressLabel.TabIndex = 6;
+            addressLabel.Text = "Адрес:";
+            // 
+            // searchLabel
+            // 
+            searchLabel.AutoSize = true;
+            searchLabel.Font = new Font("Segoe UI", 9F);
+            searchLabel.Location = new Point(10, 44);
+            searchLabel.Margin = new Padding(5, 0, 5, 0);
+            searchLabel.Name = "searchLabel";
+            searchLabel.Size = new Size(77, 30);
+            searchLabel.TabIndex = 0;
+            searchLabel.Text = "Поиск:";
+            // 
+            // inputGroupBox
+            // 
+            inputGroupBox.Controls.Add(nameLabel);
+            inputGroupBox.Controls.Add(nameTextBox);
+            inputGroupBox.Controls.Add(emailLabel);
+            inputGroupBox.Controls.Add(emailTextBox);
+            inputGroupBox.Controls.Add(phoneLabel);
+            inputGroupBox.Controls.Add(phoneTextBox);
+            inputGroupBox.Controls.Add(addressLabel);
+            inputGroupBox.Controls.Add(addressTextBox);
+            inputGroupBox.Controls.Add(addClientButton);
+            inputGroupBox.Controls.Add(removeClientButton);
+            inputGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            inputGroupBox.Location = new Point(21, 24);
+            inputGroupBox.Margin = new Padding(5, 6, 5, 6);
+            inputGroupBox.Name = "inputGroupBox";
+            inputGroupBox.Padding = new Padding(5, 6, 5, 6);
+            inputGroupBox.Size = new Size(960, 320);
+            inputGroupBox.TabIndex = 0;
+            inputGroupBox.TabStop = false;
+            inputGroupBox.Text = "Ввод данных клиента";
+            // 
+            // searchGroupBox
+            // 
+            searchGroupBox.Controls.Add(searchLabel);
+            searchGroupBox.Controls.Add(searchTextBox);
+            searchGroupBox.Controls.Add(searchButton);
+            searchGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            searchGroupBox.Location = new Point(21, 356);
+            searchGroupBox.Margin = new Padding(5, 6, 5, 6);
+            searchGroupBox.Name = "searchGroupBox";
+            searchGroupBox.Padding = new Padding(5, 6, 5, 6);
+            searchGroupBox.Size = new Size(960, 120);
+            searchGroupBox.TabIndex = 1;
+            searchGroupBox.TabStop = false;
+            searchGroupBox.Text = "Поиск клиентов";
+            // 
+            // listGroupBox
+            // 
+            listGroupBox.Controls.Add(clientsListBox);
+            listGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            listGroupBox.Location = new Point(21, 488);
+            listGroupBox.Margin = new Padding(5, 6, 5, 6);
+            listGroupBox.Name = "listGroupBox";
+            listGroupBox.Padding = new Padding(5, 6, 5, 6);
+            listGroupBox.Size = new Size(960, 430);
+            listGroupBox.TabIndex = 2;
+            listGroupBox.TabStop = false;
+            listGroupBox.Text = "Список клиентов";
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(12F, 30F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(240, 240, 240);
+            ClientSize = new Size(1001, 942);
+            Controls.Add(inputGroupBox);
+            Controls.Add(searchGroupBox);
+            Controls.Add(listGroupBox);
+            Font = new Font("Segoe UI", 9F);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(5, 6, 5, 6);
+            MaximizeBox = false;
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Управление клиентами";
+            inputGroupBox.ResumeLayout(false);
+            inputGroupBox.PerformLayout();
+            searchGroupBox.ResumeLayout(false);
+            searchGroupBox.PerformLayout();
+            listGroupBox.ResumeLayout(false);
+            ResumeLayout(false);
         }
     }
 }
